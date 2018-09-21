@@ -1,0 +1,17 @@
+{
+    "name": "dandjo/huigate-manager",
+    "description": "A webinterface to manage your HuiGate (Huawei E5186 LTE Router).",
+    "type": "project",
+    "require": {
+        "guzzlehttp/guzzle": "^6.2@dev",
+        "symfony/http-kernel": "^4.1@dev",
+        "symfony/routing": "^4.1@dev"
+    },
+    "authors": [
+        {
+            "name": "Daniel Pernold",
+            "email": "daniel.pernold@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
