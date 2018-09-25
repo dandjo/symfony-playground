@@ -18,13 +18,14 @@ foreach ($routes as $name => $route) {
     $routeCollection->add($name, $route);
 }
 $request = Request::createFromGlobals();
-$context = new RequestContext('/');
+$context = new RequestContext();
 $matcher = new UrlMatcher($routeCollection, $context);
+$requestStack = new RequestStack();
 $dispatcher = new EventDispatcher();
-$dispatcher->addSubscriber(new RouterListener($matcher, new RequestStack()));
+$dispatcher->addSubscriber(new RouterListener($matcher, $requestStack));
 $controllerResolver = new ControllerResolver();
 $argumentResolver = new ArgumentResolver();
-$kernel = new HttpKernel($dispatcher, $controllerResolver, new RequestStack(), $argumentResolver);
+$kernel = new HttpKernel($dispatcher, $controllerResolver, $requestStack, $argumentResolver);
 $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);
